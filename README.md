@@ -1,2 +1,2 @@
 # wheel-images
-A fancy search image searchengine to precisely search for images
+A fancy image searchengine to precisely search for images
