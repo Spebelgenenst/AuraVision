@@ -33,4 +33,6 @@ class embeds():
             token_type_ids=inputs['token_type_ids'],
         )
 
+        return text_embeds
+
 embeds()
