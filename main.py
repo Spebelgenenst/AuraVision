@@ -1,3 +1,4 @@
-import ai_embeds
+from ai import ai_embeds
 
- 
+embeds = ai_embeds()
+
