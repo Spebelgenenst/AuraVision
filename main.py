@@ -1,3 +1,5 @@
-from ai import ai_embeds
+from ai import embeds
+from file_managment import database
 
-embeds = ai_embeds()
+db = database()
+embeds = embeds()

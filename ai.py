@@ -3,7 +3,7 @@ import torch
 from PIL import Image
 from transformers import AlignProcessor, AlignModel
 
-class ai_embeds():
+class embeds():
 
     def __init__(self):
         self.processor = AlignProcessor.from_pretrained("kakaobrain/align-base")
