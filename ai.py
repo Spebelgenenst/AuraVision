@@ -36,3 +36,6 @@ class ai_embeds():
             )
 
         return text_embeds / text_embeds.norm(dim=1, keepdim=True)
+
+    def get_similarity(self, text_embeds, image_embeds):
+        return torch.matmul(text_embeds, image_embeds.T)
