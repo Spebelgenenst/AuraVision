@@ -9,8 +9,6 @@ class embeds():
         self.processor = AlignProcessor.from_pretrained("kakaobrain/align-base")
         self.model = AlignModel.from_pretrained("kakaobrain/align-base")
 
-        print("ai_embeds loaded")
-
 
     def image_embed(self, image_url):
         image = Image.open(requests.get(image_url, stream=True).raw)
