@@ -22,7 +22,7 @@ class ai_embeds():
                 pixel_values=inputs['pixel_values'],
             )
 
-        return image_embeds
+        return image_embeds / image_embeds.norm(dim=1, keepdim=True)
 
 
     def text_embed(self, text):
@@ -35,4 +35,4 @@ class ai_embeds():
                 token_type_ids=inputs['token_type_ids'],
             )
 
-        return text_embeds
+        return text_embeds / text_embeds.norm(dim=1, keepdim=True)
