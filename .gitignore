@@ -1,3 +1,4 @@
 __pycache__/
 .embeds.db.lock
 embeds.db
+credentials.json
