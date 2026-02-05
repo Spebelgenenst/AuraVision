@@ -19,14 +19,14 @@ class database():
             collection_name="embeds",
             data=embed,
             limit=count,
-            output_fields=["url"],
+            output_fields=["url", "credit"],
         )
 
         return result
 
-    def add_entry(self, embed, url): # add entry with url and embed
+    def add_entry(self, embed, url, credit): # add entry with url and embed
         self.last_id += 1
 
-        data = [{"id": self.last_id, "vector": embed, "url": url}]
+        data = [{"id": self.last_id, "vector": embed, "url": url, "credit": credit}]
 
         return client.insert(collection_name="embeds", data=data)
