@@ -15,13 +15,18 @@ class database():
         print(self.last_id)
 
     def search(self, embed, count):
-        return
+        result = client.search(
+            collection_name="embeds",
+            data=embed,
+            limit=count,
+            output_fields=["url"],
+        )
+
+        return result
 
     def add_entry(self, embed, url): # add entry with url and embed
-        return
+        self.last_id += 1
 
-    def add_url(self, url): # add an url with a blank embed
-        return
+        data = [{"id": self.last_id, "vector": embed, "url": url}]
 
-    def add_embed(self, id, embed): # insert something (blank embed)
-        return
+        return client.insert(collection_name="embeds", data=data)
