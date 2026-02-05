@@ -1,2 +1,2 @@
 # ImAura Search
-A fancy image searchengine to precisely search for images
+An image searchengine using embeds to precisely find what you want. 
