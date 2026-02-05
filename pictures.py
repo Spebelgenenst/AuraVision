@@ -8,25 +8,26 @@ with open("credentials.json", "r") as file:
 
 class unsplash():
     def __init__(self):
-        access_key = credentials["Unsplash"]
-        random_url = f"https://api.unsplash.com/photos/random?client_id={access_key}"
+        self.access_key = credentials["Unsplash"]
+        self.random_url = f"https://api.unsplash.com/photos/random?client_id={self.access_key}"
 
     def get_random(self):
-        response = requests.get(random_url)
+        response = requests.get(self.random_url)
         photo = response.json()
 
-        payload = {"client_id": access_key}
+        return photo
+
+    def download_image(self, photo):
+        payload = {"client_id": self.access_key}
         status_code = requests.get(photo["links"]["download_location"], payload).status_code
 
         if status_code == 200:
-            download_endpoint = f"https://api.unsplash.com/photos/{photo["id"]}/download?client_id={access_key}"
-            print(download_endpoint)
+            download_endpoint = f"https://api.unsplash.com/photos/{photo["id"]}/download?client_id={self.access_key}"
             image_download_url = requests.get(download_endpoint).json()["url"]
-            print(image_download_url)
-            #response = requests.get(image_download_url)
-            #image = Image.open(BytesIO(response.content))
+            response = requests.get(image_download_url)
+            image = Image.open(BytesIO(response.content))
 
-            return image_download_url
+            return image
 
         else:
             print("unsplash error: ", status_code)
