@@ -11,9 +11,6 @@ class database():
             dimension=2,  # The vectors we will use in this demo has 768 dimensions
         )
 
-        self.last_id = client.query(collection_name="embeds", expr="id >= 0", limit=1, sort_by=["id DESC"])
-        print(self.last_id)
-
     def search(self, embed, count):
         result = client.search(
             collection_name="embeds",
@@ -27,6 +24,6 @@ class database():
     def add_entry(self, embed, url, credit): # add entry with url and embed
         self.last_id += 1
 
-        data = [{"id": self.last_id, "vector": embed, "url": url, "credit": credit}]
+        data = [{"auto_id": True, "vector": embed, "url": url, "credit": credit}]
 
         return client.insert(collection_name="embeds", data=data)
