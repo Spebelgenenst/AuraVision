@@ -1,5 +1,5 @@
-from ai import embeds
+from ai import gen_embeds
 from file_managment import database
 
 db = database()
-embed = embeds()
+get_embed = gen_embeds()
