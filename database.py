@@ -22,7 +22,6 @@ class database():
         return result
 
     def add_entry(self, embed, url, link, credit, source): # add entry with url and embed
-        self.last_id += 1
 
         data = [{"auto_id": True, "vector": embed, "url": url, "link": link, "credit": credit, "source": source}]
 
