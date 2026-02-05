@@ -10,9 +10,7 @@ class gen_embeds():
         self.model = AlignModel.from_pretrained("kakaobrain/align-base")
 
 
-    def image_embed(self, image_url):
-        image = Image.open(requests.get(image_url, stream=True).raw)
-
+    def image_embed(self, image):
         inputs = self.processor(images=image, return_tensors="pt")
 
         with torch.no_grad():
