@@ -1,1 +1,3 @@
 __pycache__/
+.embeds.db.lock
+embeds.db
