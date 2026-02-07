@@ -11,21 +11,25 @@ class gen_embeds():
 
 
     def image_embed(self, image):
-        image_inputs = self.processor(images=image, return_tensors="pt").to(self.model.device)
+        image_inputs = self.processor(images=image, return_tensors="pt") #.to(self.model.device)
 
         with torch.no_grad():
-            image_embeds = self.model.get_image_features(**image_inputs)
+            output = self.model.get_image_features(**image_inputs)
 
-        return image_embeds / image_embeds.norm(p=2, dim=-1, keepdim=True)
+        image_embed = output.pooler_output
+
+        return image_embed / image_embed.norm(p=2, dim=-1, keepdim=True)
 
 
     def text_embed(self, text):
         text_inputs = self.processor(text=text, padding=True, return_tensors="pt").to(self.model.device)
 
         with torch.no_grad():
-            text_embeds = self.model.get_text_features(**text_inputs)
+            output = self.model.get_text_features(**text_inputs)
 
-        return text_embeds  / text_embeds.norm(p=2, dim=-1, keepdim=True)
+        textembed = output.pooler_output
+
+        return text_embed  / text_embed.norm(p=2, dim=-1, keepdim=True)
 
     #def get_similarity(self, text_embeds, image_embeds):
     #    return torch.matmul(text_embeds, image_embeds.T)
