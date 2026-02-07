@@ -1,6 +1,7 @@
 from ai import gen_embeds
 from database import database
-from pictures import unsplash
+#from pictures import unsplash
+from pictures_fake import unsplash
 
 db = database()
 embeds = gen_embeds()
@@ -26,6 +27,6 @@ class new_data():
 
         embed = embeds.image_embed(image=image)
 
-        db.add_entry(embed=embed, url=photo["links"]["html"], link=photo["urls"]["raw"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
+        db.add_entry(embed=embed, url=photo["urls"]["raw"], link=photo["links"]["html"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
 
 new_data()
