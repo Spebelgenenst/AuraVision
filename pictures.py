@@ -29,7 +29,7 @@ class unsplash():
             download_endpoint = f"https://api.unsplash.com/photos/{photo["id"]}/download?client_id={self.access_key}"
             image_download_url = requests.get(download_endpoint).json()["url"]
             response = requests.get(image_download_url)
-            image = Image.open(BytesIO(response.content)).convert("RGB")
+            image = Image.open(BytesIO(response.content))
             #image = Image.open(requests.get(image_download_url).raw).convert("RGB")
 
             return image

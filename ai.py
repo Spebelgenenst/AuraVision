@@ -11,7 +11,7 @@ class gen_embeds():
 
 
     def image_embed(self, image):
-        image_inputs = self.processor(images=image, return_tensors="pt") #.to(self.model.device)
+        image_inputs = self.processor(images=image.convert("RGB"), return_tensors="pt") #.to(self.model.device)
 
         with torch.no_grad():
             output = self.model.get_image_features(**image_inputs)
