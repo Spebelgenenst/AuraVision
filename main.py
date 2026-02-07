@@ -27,6 +27,6 @@ class new_data():
 
         embed = embeds.image_embed(image=image)
 
-        database.add_entry(embed=embed, url=photo["links"]["html"], link=photo["urls"]["raw"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
+        db.add_entry(embed=embed, url=photo["links"]["html"], link=photo["urls"]["raw"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
 
 new_data()
