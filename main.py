@@ -8,14 +8,16 @@ db = database()
 embeds = gen_embeds()
 pic = unsplash()
 
-class search():
-    pass
+class search_engine():
+    def for_text(self, text, count):
+        embed = embeds.text_embed(text)
+        return db.search(embed=embed, count=count)
 
 class collect_data():
     #def __init__(self):
     #    return
 
-    def unsplash(self):
+    def unsplash_random(self):
         photo = pic.get_random()
         if photo:
             image = pic.download_image(photo=photo)
@@ -27,3 +29,8 @@ class collect_data():
         db.add_entry(embed=embed, url=photo["urls"]["raw"], link=photo["links"]["html"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
 
 data = collect_data()
+search = search_engine()
+
+data.unsplash_random()
+
+search.for_text(text="meme", count=1)
