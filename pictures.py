@@ -13,7 +13,11 @@ class unsplash():
 
     def get_random(self):
         response = requests.get(self.random_url)
-        photo = response.json()
+        try:
+            photo = response.json()
+        except:
+            print("Error: ", response)
+            quit()
 
         return photo
 
