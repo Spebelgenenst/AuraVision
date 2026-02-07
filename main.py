@@ -12,8 +12,8 @@ class search():
     pass
 
 class collect_data():
-    def __init__(self):
-        return
+    #def __init__(self):
+    #    return
 
     def unsplash(self):
         photo = pic.get_random()
