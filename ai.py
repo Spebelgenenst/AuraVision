@@ -27,7 +27,7 @@ class gen_embeds():
         with torch.no_grad():
             output = self.model.get_text_features(**text_inputs)
 
-        textembed = output.pooler_output
+        text_embed = output.pooler_output
 
         return text_embed  / text_embed.norm(p=2, dim=-1, keepdim=True)
 
