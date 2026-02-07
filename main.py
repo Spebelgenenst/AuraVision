@@ -23,7 +23,6 @@ class new_data():
         photo = pic.get_random()
 
         image = pic.download_image(photo=photo)
-        print(image)
 
         embed = embeds.image_embed(image=image)
 
