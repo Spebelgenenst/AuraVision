@@ -1,19 +1,19 @@
 from pymilvus import MilvusClient
 
-client = MilvusClient("embeds.db")
-
 class database():
     def __init__(self):
-        if client.has_collection(collection_name="embeds"):
-            client.drop_collection(collection_name="embeds")
-        client.create_collection(
+        self.client = MilvusClient("embeds.db")
+
+        if self.client.has_collection(collection_name="embeds"):
+            self.client.drop_collection(collection_name="embeds")
+        self.client.create_collection(
             collection_name="embeds",
             dimension=640,  # The vectors we will use in this demo has 768 dimensions
             auto_id=True
         )
 
     def search(self, embed, count):
-        result = client.search(
+        result = self.client.search(
             collection_name="embeds",
             data=embed,
             limit=count,
@@ -27,4 +27,4 @@ class database():
 
         data = [{"vector": list_embed, "url": url, "link": link, "credit": credit, "source": source}]
 
-        return client.insert(collection_name="embeds", data=data)
+        return self.client.insert(collection_name="embeds", data=data)
