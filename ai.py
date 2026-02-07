@@ -18,7 +18,7 @@ class gen_embeds():
 
         image_embed = output.pooler_output
 
-        return image_embed / image_embed.norm(p=2, dim=-1, keepdim=True)
+        return torch.nn.functional.normalize(image_embed, p=2, dim=1)
 
 
     def text_embed(self, text):
@@ -29,7 +29,7 @@ class gen_embeds():
 
         text_embed = output.pooler_output
 
-        return text_embed  / text_embed.norm(p=2, dim=-1, keepdim=True)
+        return torch.nn.functional.normalize(text_embed, p=2, dim=1)
 
     #def get_similarity(self, text_embeds, image_embeds):
-    #    return torch.matmul(text_embeds, image_embeds.T)
+    #    return torch.matmul(text_embeds, image_embeds.T)67
