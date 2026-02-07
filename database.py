@@ -23,7 +23,10 @@ class database():
         return result
 
     def add_entry(self, embed, url, link, credit, source): # add entry with url and embed
+        #print(embed)
         list_embed = embed.tolist()[0] # convertsd it to a list and removes the outer Brackets [[content]] -> [content]
+        print(list_embed)
+        print(len(list_embed))
 
         data = [{"vector": list_embed, "url": url, "link": link, "credit": credit, "source": source}]
 

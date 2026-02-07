@@ -28,9 +28,13 @@ class collect_data():
 
         db.add_entry(embed=embed, url=photo["urls"]["raw"], link=photo["links"]["html"], credit=[ photo["user"]["name"] , photo["user"]["username"] ], source="unsplash")
 
+
 data = collect_data()
 search = search_engine()
 
+
 data.unsplash_random()
 
-search.for_text(text="meme", count=1)
+result = search.for_text(text="meme doge", count=1)
+
+print(result)
