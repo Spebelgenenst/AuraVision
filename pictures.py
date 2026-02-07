@@ -13,11 +13,12 @@ class unsplash():
 
     def get_random(self):
         response = requests.get(self.random_url)
-        try:
-            photo = response.json()
-        except:
-            print("Error: ", response)
-            quit()
+        limit_reached = False
+
+        if response.status_code == 403:
+            return None
+            
+        photo = response.json()
 
         return photo
 
@@ -37,3 +38,5 @@ class unsplash():
         else:
             print("unsplash error: ", status_code)
             return None
+
+    
