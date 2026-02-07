@@ -18,8 +18,10 @@ class unsplash():
             }
         }
 
-        return 
+        return photo
 
     def download_image(self, photo):
         url = "https://github.com/Spebelgenenst/ImAura-Search/blob/main/meme(for_testing).jpg?raw=true"
         image = Image.open(requests.get(url, stream=True).raw)
+
+        return image
